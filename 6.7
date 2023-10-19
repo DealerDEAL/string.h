@@ -1,0 +1,77 @@
+#include <cstring>
+#include <iostream>
+
+using namespace std;
+
+void len(const char* str1, unsigned int &l){
+    l = strlen(str1);
+}
+
+void cmp(const char* str1, const char* str2, int &c, int n, int y){
+    if(y==1){
+        c = strcmp(str1, str2);
+    }
+    if(y==2){
+        c = strncmp(str1, str2, n);
+    }
+}
+
+void chr(const char* str1, const char* &s){
+    s = strchr(str1, 'l'); 
+}
+
+char* cpy(char* str, const char* str2, int y, int n){
+    if(y == 1){
+        strcpy(str, str2);
+    }
+    if(y == 2){
+        strncpy(str, str2, n);
+    }
+    return str;
+}
+
+char* tok(char* str3, const char* sep, int y, int n, char* res){
+    res = strtok(str3, sep);
+    return res;
+}
+
+int main()
+{
+    const char str1[] = "hello world", str2[] = "hell world";
+    const char sep[] = " ";
+    char str[10];
+    unsigned int l, count, y;
+    int c, n=4;
+    char* str3 = "hello world";
+    char* res;
+    const char* s;
+    cin >> count;
+    if(count == 1){
+        len(str1, l);
+        cout << "\n" << l;
+    }
+    
+    if(count == 2){
+        cin >> y;
+        cmp(str1, str2, c, n, y);
+        cout << "\n" << c;
+    }
+    
+    if(count == 3){
+        chr(str3, s);
+        cout << "\n" << s;
+    }
+    
+    if(count == 4){
+        cin >> y;
+        cpy(str, str2, y, n);
+        cout << "\n" << str;
+    }
+    
+    if(count == 5){
+        tok(str3, sep, y, n, res);
+        cout << "\n" <<res;
+    }
+    
+    return 0;
+}
