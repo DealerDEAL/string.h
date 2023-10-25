@@ -18,7 +18,7 @@ int main() {
     const char* result = findCharacter(myString, target);
 
     if (result != nullptr) {
-        std::cout << "Character found at position: " << (result - myString) << std::endl;
+        std::cout << "Character found at position: " << (result - myString+1) << std::endl;
     } else {
         std::cout << "Character not found." << std::endl;
     }
