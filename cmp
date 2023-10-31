@@ -1,46 +1,50 @@
-#include <cstring>
-//#include <algorithm>
+#include <string.h>
+#include <stdio.h>
 #include <iostream>
 
 using namespace std;
 
-void cmp(const char* str1, const char* str2, int &c, int n, int y){
+int cmp(const char* str1, const char* str2, int c){
     int i =0;
-    if(y == 1){
-        while(i < 10){
-             if(str1[i] == str2[i]){
-                c=0;
-            }
-            if(str1[i] > str2[i]){
-                c=1;
-            }
-            if(str1[i] < str2[i]){
-                c=-1;
-            }
-            i++;
+     while(str1[i] != '\0'){
+        if(str1[i] == str2[i]){
+            c=0;
         }
+        if(str1[i] > str2[i]){
+            c=1;
+        }
+        if(str1[i] < str2[i]){
+            c=-1;
+        }
+        i++;
     }
-    if(y == 2){
-        while(i < n){
-            if(str1[i] == str2[i]){
-                c=0;
-            }
-            if(str1[i] > str2[i]){
-                c=1;
-            }
-            if(str1[i] < str2[i]){
-                c=-1;
-            }
-            i++;
+    return c;
+}
+
+int ncmp(const char* str1, const char* str2, int &c, int n){
+    int i = 0;
+    while(i < n){
+        if(str1[i] == str2[i]){
+            c=0;
+        }
+        if(str1[i] > str2[i]){
+            c=1;
+        }
+        if(str1[i] < str2[i]){
+            c=-1;
+        }
+        i++;
     }
-    }
+    return c;
 }
 int main(){
     const char str1[] = "hell world", str2[] = "hell world";
     unsigned int count, y;
     int c; 
     int n=4;
-        cin >> y;
-        cmp(str1, str2, c, n, y);
-        cout << "\n" << c;
+    //cmp(str1, str2, c, n, y);
+    //cout << "\n" << c;
+    //cout <<
+    printf(cmp(str1, str2, c) == strcmp(str1, str2) ? "true" : "false");
+    printf(ncmp(str1, str2, c, n) == strncmp(str1, str2, n) ? "true" : "false");
 }
